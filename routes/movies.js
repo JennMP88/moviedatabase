@@ -29,10 +29,10 @@ moviesRouter.get('/movies', (req, res, next) => {
 });
 
 //-----READS ALL MOVIES BY GENRE
-moviesRouter.get('/movies', (req, res, next) => {
-  const {} = req.body;
+moviesRouter.get('/genre/:id', (req, res, next) => {
+  const {id} = req.params;
   
-  MoviesServices.readmoviegenre()
+  MoviesServices.readmoviegenre(id)
     .then(data => {
       res.json(data);
     })
@@ -40,6 +40,8 @@ moviesRouter.get('/movies', (req, res, next) => {
       next(err);
     })
 });
+
+
 
 
 module.exports=moviesRouter;
