@@ -29,10 +29,36 @@ moviesRouter.get('/movies', (req, res, next) => {
 });
 
 //-----READS ALL MOVIES BY GENRE
-moviesRouter.get('/genre/:id', (req, res, next) => {
+moviesRouter.get('/genre/:genre', (req, res, next) => {
+  const {genre} = req.params;
+  
+  MoviesServices.readmoviegenre(genre)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//------READS ALL INFO AND COMMENTS FOR A SPECIFIC MOVIE
+moviesRouter.get('/allcomments/:id', (req, res, next) => {
   const {id} = req.params;
   
-  MoviesServices.readmoviegenre(id)
+  MoviesServices.readmoviecomments(id)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//-----READS ALL INFO RATING FOR A SPECIFIC MOVIE 
+moviesRouter.get('/allratings/:id', (req, res, next) => {
+  const {id} = req.params;
+  
+  MoviesServices.readmovieratings(id)
     .then(data => {
       res.json(data);
     })
