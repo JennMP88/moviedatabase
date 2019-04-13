@@ -7,6 +7,8 @@ const cors = require('cors');
 
 //define routes
 const moviesRouter = require('./routes/movies');
+const commentRouter = require('./routes/comments');
+const ratingsRouter = require('./routes/ratings');
 
 
 // -------- MIDDLEWARE
@@ -20,6 +22,8 @@ app.use(bodyParser.json())
 
 //routes
 app.use('/movies', moviesRouter);
+app.use('/comments', commentRouter);
+app.use('/ratings', ratingsRouter);
 
 app.use((err, req, res, next) => {
   res.status(400).json({error: err.toString()});

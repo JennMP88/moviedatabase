@@ -68,6 +68,4 @@ moviesRouter.get('/allratings/:id', (req, res, next) => {
 });
 
 
-
-
 module.exports=moviesRouter;
