@@ -11,6 +11,7 @@ const commentRouter = require('./routes/comments');
 const ratingsRouter = require('./routes/ratings');
 
 
+
 // -------- MIDDLEWARE
 app.use(cors());
 // parse application/x-www-form-urlencoded
@@ -38,6 +39,9 @@ app.listen(port, ()=>{
 app.get('/', (req, res) => {
   res.json('Hello world');
 })
+
+//res.json{}
+//res.send a string msg
 
 
 

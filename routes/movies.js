@@ -2,11 +2,11 @@ const express=require('express')
 const moviesRouter=express.Router();
 const MoviesServices=require('../services/movies')
 
-//----------GET ALL MOVIES by ID 
-moviesRouter.get('/movies/:id', (req, res, next) => {
-  const {id} = req.params;
+//----------GET MOVIES by name 
+moviesRouter.get('/movies/:title', (req, res, next) => {
+  const {title} = req.params;
   
-  MoviesServices.read(id)
+  MoviesServices.read(title)
     .then(data => {
       res.json(data);
     })
@@ -42,10 +42,10 @@ moviesRouter.get('/genre/:genre', (req, res, next) => {
 });
 
 //------READS ALL INFO AND COMMENTS FOR A SPECIFIC MOVIE
-moviesRouter.get('/allcomments/:id', (req, res, next) => {
-  const {id} = req.params;
+moviesRouter.get('/allcomments/:title', (req, res, next) => {
+  const {title} = req.params;
   
-  MoviesServices.readmoviecomments(id)
+  MoviesServices.readmoviecomments(title)
     .then(data => {
       res.json(data);
     })
@@ -55,10 +55,10 @@ moviesRouter.get('/allcomments/:id', (req, res, next) => {
 });
 
 //-----READS ALL INFO RATING FOR A SPECIFIC MOVIE 
-moviesRouter.get('/allratings/:id', (req, res, next) => {
-  const {id} = req.params;
+moviesRouter.get('/allratings/:title', (req, res, next) => {
+  const {title} = req.params;
   
-  MoviesServices.readmovieratings(id)
+  MoviesServices.readmovieratings(title)
     .then(data => {
       res.json(data);
     })

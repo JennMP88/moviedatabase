@@ -2,13 +2,13 @@ const {db} = require('./dbConnect');
 const MoviesServices = {};
 
 
-//---------Reads all movies by id
-MoviesServices.read= (id) => {
+//---------Reads movies by title
+MoviesServices.read= (title) => {
     const sql = `
    SELECT *
    FROM movies
-   WHERE id= ${id} `
-    return db.any(sql, {id});
+   WHERE title= ${title} `
+    return db.any(sql, {title});
   }
 
   //-------Reads all movies 
@@ -31,22 +31,22 @@ MoviesServices.read= (id) => {
 
   
 //-----------Reads all info and comments for a specific movie
-MoviesServices.readmoviecomments= (id) => {
+MoviesServices.readmoviecomments= (title) => {
   const sql = `SELECT movies.*, comments.*
   FROM comments
   JOIN movies ON movies.id=comments.movie_id
-  WHERE movies.id=$[id]`
-  return db.any(sql, {id});
+  WHERE movies.title=$[title]`
+  return db.any(sql, {title});
 }
 
 
 //-----------Read all info and ratings for a specific movie
-MoviesServices.readmovieratings= (id) => {
+MoviesServices.readmovieratings= (title) => {
   const sql = `SELECT movies.*, ratings.*
   FROM ratings
   JOIN movies ON movies.id=ratings.movie_id
-  WHERE movies.id=$[id]`
-  return db.any(sql, {id});
+  WHERE movies.title=$[title]`
+  return db.any(sql, {title});
 }
 
 
